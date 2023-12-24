@@ -47,14 +47,14 @@ const Navbar = () => {
 
 
         <div>
-            <nav className="flex justify-between items-center flex-col gap-3 md:flex-row py-5 px-6 text-base bg-[#262626] ">
-                <h2 className="text-3xl font-extrabold dark:text-white text-white">Task<span className="text-[#d88531] ">Flow</span></h2>
+            <nav className="flex justify-between items-center flex-col gap-3 md:flex-row py-5 px-6 text-base bg-black shadow-xl">
+                <h2 className="text-3xl font-extrabold dark:text-white text-white">Task<span className="text-[#4add82] ">Flow</span></h2>
                 <ul className="flex gap-5 flex-col md:flex-row font-semibold dark:text-white text-white">
                     <li>
                         <NavLink
                             to="/"
                             className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "text-[#d88531] " : ""
+                                isPending ? "pending" : isActive ? "text-[#4add82] " : ""
                             }
                         >
                             Home
@@ -64,7 +64,7 @@ const Navbar = () => {
                         <NavLink
                             to="/contactus"
                             className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "text-[#d88531] " : ""
+                                isPending ? "pending" : isActive ? "text-[#4add82] " : ""
                             }
                         >
                             ContactUs
@@ -74,7 +74,7 @@ const Navbar = () => {
                         <NavLink
                             to="/dashbaord"
                             className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "text-[#d88531] " : ""
+                                isPending ? "pending" : isActive ? "text-[#4add82] " : ""
                             }
                         >
                             DashBoard
@@ -84,7 +84,7 @@ const Navbar = () => {
                         <NavLink
                             to="/login"
                             className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "text-[#d88531]  " : ""
+                                isPending ? "pending" : isActive ? "text-[#4add82]  " : ""
                             }
                         >
                             Login
@@ -101,16 +101,18 @@ const Navbar = () => {
                         user ?
                             <>
                                 <div className="flex justify-between items-center ">
-                                    <img className='rounded-full w-[35px] md:w-[40px] h-[35px] md:h-[40px]' src={user?.photoURL} alt='' />
-                                    <h1 className="text-white w-2/3 pr-1">{user?.displayName}</h1>
-                                    <button onClick={handleLogOut} className="btn border-[#d88531] text-white bg-transparent px-10 rounded-md">
+                                    <div className="w-1/2 pr-1 flex justify-between bg-transparent">
+                                        <h1 className="text-white">{user?.displayName}</h1>
+                                        <img className='rounded-full w-[35px] md:w-[40px] h-[35px] md:h-[40px]' src={user?.photoURL} alt='' />
+                                    </div>
+                                    <button onClick={handleLogOut} className="btn text-slate-900 bg-[#4add82] px-10 rounded-md">
                                         Logout
                                     </button>
                                 </div>
                             </>
                             :
                             <NavLink to='/login'>
-                                <li className="btn border-[#d88531] text-white bg-transparent px-10 rounded-md">
+                                <li className="btn border-none text-slate-900 bg-[#4add82] px-10 rounded-md">
                                     <a>Log in</a>
                                 </li>
                             </NavLink>

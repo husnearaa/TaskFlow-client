@@ -6,7 +6,7 @@ import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 const Footer = () => {
 	return (
 		<div>
-			<footer className="px-4 divide-y bg-[#262626] text-gray-100 mt-10">
+			<footer className="px-4 divide-y bg-black text-gray-100 mt-10">
 				<div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
 					<div className="lg:w-1/3">
 						<a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
@@ -16,7 +16,7 @@ const Footer = () => {
 					</svg>
 				</div> */}
 							{/* <span className="self-center text-2xl font-semibold">Brand name</span> */}
-							<h2 className="text-3xl font-extrabold dark:text-white text-white">Task<span className="text-[#d88531]">Flow</span></h2>
+							<h2 className="text-3xl font-extrabold dark:text-white text-white">Task<span className="text-green-400">Flow</span></h2>
 						</a>
 					</div>
 					<div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
