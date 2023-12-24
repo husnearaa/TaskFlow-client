@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-import img from '../../../public/giphy.gif'
+import img from '../../assets/giphy.gif';
+
 const Banner = () => {
+
 
     return (
         <div className=' w-full h-[550px] flex justify-between items-center'>

@@ -5,6 +5,9 @@ import ContactUs from "../pages/ContactUs/ContactUs";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../layout/Dashboard";
+// import UserHome from "../pages/Dashboard/UserHome";
 
 
 
@@ -34,7 +37,19 @@ const myCreatedRoute = createBrowserRouter([
                 element:<Register></Register>
             }
         ]
-    }
+    },
+    {
+        path:'/dashboard',
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        errorElement:<ErrorPage></ErrorPage>,
+        children: [
+            // {
+            //     path:'/dashboard',
+            //     element:<PrivateRoute><UserHome></UserHome></PrivateRoute>
+            // },
+           
+        ]
+    },
 ])
 
 export default myCreatedRoute;

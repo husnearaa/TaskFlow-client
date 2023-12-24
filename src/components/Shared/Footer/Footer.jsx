@@ -65,13 +65,13 @@ const Footer = () => {
 						<div className="space-y-3">
 							<div className="uppercase text-gray-50">Social media</div>
 							<div className="flex justify-start space-x-3">
-								<a rel="noopener noreferrer" href="#" title="Facebook" className="flex items-center p-1">
+								<a rel="noopener noreferrer" href="https://www.facebook.com/" target="_blank" title="Facebook" className="flex items-center p-1">
 									<FaFacebook className="text-3xl"></FaFacebook>
 								</a>
-								<a rel="noopener noreferrer" href="#" title="Twitter" className="flex items-center p-1">
+								<a rel="noopener noreferrer" href="https://www.youtube.com/" target="_blank" title="Youtube" className="flex items-center p-1">
 									<FaYoutube className="text-4xl"></FaYoutube>
 								</a>
-								<a rel="noopener noreferrer" href="#" title="Instagram" className="flex items-center p-1">
+								<a rel="noopener noreferrer" href="https://www.instagram.com/" target="_blank" title="Instagram" className="flex items-center p-1">
 									<FaInstagram className="text-3xl"></FaInstagram>
 								</a>
 							</div>
