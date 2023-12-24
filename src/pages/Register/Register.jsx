@@ -1,10 +1,78 @@
+
 import { useForm } from "react-hook-form";
-import { Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
+import axios from "axios";
 import { FcGoogle } from "react-icons/fc";
+import { useState } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+
 
 const SignUp = () => {
 
-    const { register, formState: { errors } } = useForm();
+
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { createUser, updateUserProfile, signInWithGoogle } = useState(AuthContext);
+    const navigate = useNavigate();
+
+    const onSubmit = data => {
+        // console.log(data);
+        createUser(data.email, data.password, data.photoURL)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+                        // console.log('user profile info updated')
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email,
+                            image: data.photoURL
+                        }
+                        axios.post('https://tech-discover-hub-server.vercel.app/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user added to the database')
+                                }
+                            })
+                        reset();
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'User created successfully.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate('/');
+
+                    })
+                    .catch(error => console.log(error))
+            })
+    };
+
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                console.log(result.user);
+                const userInfo = {
+                    email: result.user?.email,
+                    name: result.user?.displayName
+                }
+                axios.post('https://tech-discover-hub-server.vercel.app/users', userInfo)
+                    .then(res => {
+                        console.log(res.data);
+                        Swal.fire("Good job!", "User Logged in Successfully!", "success");
+                        // navigate after login 
+                        navigate(location?.state ? location.state : '/');
+                    })
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
+
+
 
 
     return (
@@ -15,7 +83,7 @@ const SignUp = () => {
             />
             <div className=" absolute h-screen w-full place-items-center bg-black/60">
                 <h2 className="text-3xl my-8 font-bold text-center text-white">Register</h2>
-                <form className="lg:w-1/3 md:w-1/3 w-4/5 mx-auto text-center place-items-center">
+                <form onSubmit={handleSubmit(onSubmit)} className="lg:w-1/3 md:w-1/3 w-4/5 mx-auto text-center place-items-center">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text text-white">Name</span>
@@ -56,7 +124,7 @@ const SignUp = () => {
                         <input className="btn bg-[#d88531] text-black  rounded-md border-none" type="submit" value="Sign Up" />
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn bg-[#d88531] text-black  rounded-md border-none">
+                        <button onClick={handleGoogleSignIn} className="btn bg-[#d88531] text-black  rounded-md border-none">
                             <FcGoogle className="text-3xl"></FcGoogle>
                             Log in with Google
                         </button>
@@ -69,7 +137,7 @@ const SignUp = () => {
                 success && <p className="text-green-600">{success}</p>
             } */}
                 <p className="text-center text-white mb-20">Already have an Account? <Link
-                    className="text-white font-bold text-lg mb-10" to='/login'>Login</Link>
+                    className="text-white font-bold text-base mb-10" to='/login'>Login</Link>
                 </p>
             </div>
         </div>
