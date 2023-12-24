@@ -80,7 +80,7 @@ const Navbar = () => {
                             DashBoard
                         </NavLink>
                     </li>
-                    {/* <li>
+                    <li>
                         <NavLink
                             to="/login"
                             className={({ isActive, isPending }) =>
@@ -89,7 +89,7 @@ const Navbar = () => {
                         >
                             Login
                         </NavLink>
-                    </li> */}
+                    </li>
                 </ul>
                 {/* <button className="btn border-[#fed700] text-black bg-[#fed700] px-10 rounded-full">Login</button> */}
 
