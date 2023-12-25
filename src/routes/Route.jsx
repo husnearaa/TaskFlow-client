@@ -7,7 +7,7 @@ import Register from "../pages/Register/Register";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../layout/Dashboard";
-// import UserHome from "../pages/Dashboard/UserHome";
+import UserHome from "../pages/Dashboard/UserHome";
 
 
 
@@ -43,10 +43,11 @@ const myCreatedRoute = createBrowserRouter([
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         errorElement:<ErrorPage></ErrorPage>,
         children: [
-            // {
-            //     path:'/dashboard',
-            //     element:<PrivateRoute><UserHome></UserHome></PrivateRoute>
-            // },
+            {
+                path:'/dashboard',
+                element:<PrivateRoute><UserHome></UserHome></PrivateRoute>
+            },
+           
            
         ]
     },
