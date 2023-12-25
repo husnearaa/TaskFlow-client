@@ -1,52 +1,40 @@
-import { useContext } from "react";
+import { useContext} from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { AuthContext } from "../../Provider/AuthProvider";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const AddTask = () => {
 
-    const { user } = useContext(AuthContext);
-    const { register, handleSubmit, formState: { errors }, } = useForm();
+  const { user } = useContext(AuthContext);
+  const {register, handleSubmit, formState: { errors },} = useForm();
 
 
 
-    const onSubmit = async (data, e) => {
-        e.preventDefault();
-        const title = data.title;
-        const priority = data.priority;
-        const date = data.date;
-        const des = data.des;
+  const onSubmit = async (data, e) => {
+    e.preventDefault();
+    const title = data.title;
+    const priority = data.priority;
+    const date = data.date;
+    const des = data.des;
 
-        const Info = {
-            title,
-            email: user?.email,
-            priority,
-            deadline: date,
-            description: des,
-        };
-        axios
-            .post(
-                "http://localhost:5000/tasks",
-                Info
-            )
-            .then(() => {
-                e.target.reset();
-                toast.success("Successfully added Task!", {
-                    position: "top-center",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-                });
-            })
-            .catch(() => {
-            });
+    const Info = {
+      title,
+      email: user?.email,
+      priority,
+      deadline: date,
+      description: des,
     };
 
+    axios.post("http://localhost:5000/tasks",Info)
+    .then(res => {
+        if (res.data.insertedId) {
+            toast.success('Task added Successfully !')
+            e.target.reset();
+            // navigate('/')
+        }
+    })
+  }
     return (
         <div className="text-black max-w-full  mx-auto h-screen flex items-center justify-center flex-col mb-20 lg:mb-0">
             <form
