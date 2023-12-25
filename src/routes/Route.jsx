@@ -7,7 +7,9 @@ import Register from "../pages/Register/Register";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../layout/Dashboard";
-import UserHome from "../pages/Dashboard/UserHome";
+import AllTask from "../pages/Dashboard/AllTask";
+import AddTask from "../pages/Dashboard/AddTask";
+
 
 
 
@@ -45,7 +47,11 @@ const myCreatedRoute = createBrowserRouter([
         children: [
             {
                 path:'/dashboard',
-                element:<PrivateRoute><UserHome></UserHome></PrivateRoute>
+                element:<PrivateRoute><AllTask></AllTask></PrivateRoute>
+            },
+            {
+                path:'/dashboard/addTask',
+                element:<PrivateRoute><AddTask></AddTask></PrivateRoute>
             },
            
            

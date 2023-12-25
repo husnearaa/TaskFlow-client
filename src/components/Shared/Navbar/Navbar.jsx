@@ -47,7 +47,7 @@ const Navbar = () => {
 
 
         <div>
-            <nav className="flex justify-between items-center flex-col gap-3 md:flex-row py-5 px-6 text-base bg-black shadow-xl">
+            <nav className="flex justify-between items-center flex-col gap-3 md:flex-row py-5 px-6 text-base shadow-xl">
                 <h2 className="text-3xl font-extrabold dark:text-white text-white">Task<span className="text-[#4add82] ">Flow</span></h2>
                 <ul className="flex gap-5 flex-col md:flex-row font-semibold dark:text-white text-white">
                     <li>

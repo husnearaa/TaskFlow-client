@@ -38,8 +38,8 @@ const Dashboard = () => {
                 </div>
                 <hr />
                 <div className='my-10 flex flex-col justify-center space-y-4'>
-                    <NavLink className=' text-white hover:text-[#4add82] hover:text-lg' to='/dashboard'>Blog</NavLink>
-                    <NavLink className=' text-white hover:text-[#4add82] hover:text-lg' to='/dashboard/roadmap'>Roadmap</NavLink>
+                    <NavLink className=' text-white hover:text-[#4add82] hover:text-lg' to='/dashboard'>All Task</NavLink>
+                    <NavLink className=' text-white hover:text-[#4add82] hover:text-lg' to='/dashboard/addTask'>Add Task</NavLink>
                 </div>
                 <hr />
                 <div className='my-10 flex flex-col justify-center space-y-4'>
